@@ -1,5 +1,6 @@
 package com.pinkkila.backend.todo;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +27,7 @@ public class TodoController {
     }
     
     @PostMapping
-    public ResponseEntity<Todo> create(@RequestBody TodoRequest todoRequest, UriComponentsBuilder ucb) {
+    public ResponseEntity<Todo> create(@Valid @RequestBody TodoRequest todoRequest, UriComponentsBuilder ucb) {
         Todo createdTodo = todoService.create(todoRequest);
         var location = ucb.path("/api/todos/{id}").buildAndExpand(createdTodo.getId()).toUri();
         return ResponseEntity.created(location).body(createdTodo);
