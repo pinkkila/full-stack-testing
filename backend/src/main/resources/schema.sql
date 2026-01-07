@@ -6,5 +6,5 @@ create table if not exists todo
     title       text      not null,
     description text      not null,
     created     timestamp not null,
-    done        boolean
+    completed   boolean
 );

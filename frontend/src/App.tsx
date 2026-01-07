@@ -1,5 +1,6 @@
 import TodoForm from "@/components/TodoForm.tsx";
 import { Toaster } from "@/components/ui/sonner.tsx";
+import TodoList from "@/components/TodoList.tsx";
 
 export function App() {
   return (
@@ -10,6 +11,8 @@ export function App() {
 
       <TodoForm />
       <Toaster />
+
+      <TodoList />
     </div>
   );
 }
