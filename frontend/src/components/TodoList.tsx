@@ -5,8 +5,9 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item.tsx";
-import { Button } from "@/components/ui/button.tsx";
 import type { TTodo } from "@/lib/types.ts";
+import { Checkbox } from "@/components/ui/checkbox.tsx";
+import { Label } from "@/components/ui/label.tsx";
 
 export default function TodoList() {
   const todos = [
@@ -22,7 +23,7 @@ export default function TodoList() {
       title: "Second Todo",
       description: "This is the second todo item",
       created: new Date(),
-      completed: false,
+      completed: true,
     },
   ];
 
@@ -37,19 +38,25 @@ export default function TodoList() {
 
 function TodoItem({ todo }: { todo: TTodo }) {
   return (
-    <Item variant="outline">
-      <ItemContent>
-        <ItemTitle>{todo.title}</ItemTitle>
-        <ItemDescription>{todo.description}</ItemDescription>
-      </ItemContent>
-      <ItemActions>
-        <Button variant="destructive" size="sm">
-          Delete
-        </Button>
-        <Button variant="outline" size="sm">
-          Action
-        </Button>
-      </ItemActions>
+    <Item
+      asChild
+      variant="outline"
+      className="hover:bg-accent/50 cursor-pointer flex items-start gap-3 rounded-lg border p-3 dark:has-aria-checked:border-primary/40 dark:has-aria-checked:bg-primary/30"
+    >
+      <Label>
+        <ItemActions>
+          <Checkbox defaultChecked={todo.completed} className="cursor-pointer" />
+        </ItemActions>
+        <ItemContent>
+          <ItemTitle>{todo.title}</ItemTitle>
+          <ItemDescription>{todo.description}</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          {/*<Button variant="destructive" size="sm">*/}
+          {/*  Delete*/}
+          {/*</Button>*/}
+        </ItemActions>
+      </Label>
     </Item>
   );
 }
