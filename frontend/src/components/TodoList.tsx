@@ -41,11 +41,14 @@ function TodoItem({ todo }: { todo: TTodo }) {
     <Item
       asChild
       variant="outline"
-      className="hover:bg-accent/50 cursor-pointer flex items-start gap-3 rounded-lg border p-3 dark:has-aria-checked:border-primary/40 dark:has-aria-checked:bg-primary/30"
+      className="hover:bg-accent/50 cursor-pointer border p-3 has-aria-checked:border-primary/40 has-aria-checked:bg-primary/10 hover:has-aria-checked:bg-primary/20"
     >
       <Label>
         <ItemActions>
-          <Checkbox defaultChecked={todo.completed} className="cursor-pointer" />
+          <Checkbox
+            defaultChecked={todo.completed}
+            className="cursor-pointer"
+          />
         </ItemActions>
         <ItemContent>
           <ItemTitle>{todo.title}</ItemTitle>
