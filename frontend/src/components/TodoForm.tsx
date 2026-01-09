@@ -22,6 +22,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
+import type { TTodo } from "@/lib/types.ts";
 
 const formSchema = z.object({
   title: z
@@ -34,7 +35,7 @@ const formSchema = z.object({
     .max(100, "Description must be at most 100 characters."),
 });
 
-export default function TodoForm() {
+export default function TodoForm( {setTodos} : {setTodos: React.Dispatch<React.SetStateAction<TTodo[]>>}) {
   const form = useForm({
     defaultValues: {
       title: "",
@@ -57,6 +58,19 @@ export default function TodoForm() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
+      });
+
+      setTodos((prevTodos: TTodo[]) => {
+        return [
+          ...prevTodos,
+          {
+            id: 3,
+            title: value.title,
+            description: value.description,
+            created: new Date(),
+            completed: false,
+          },
+        ];
       });
     },
   });

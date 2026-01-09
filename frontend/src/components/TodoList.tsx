@@ -9,23 +9,7 @@ import type { TTodo } from "@/lib/types.ts";
 import { Checkbox } from "@/components/ui/checkbox.tsx";
 import { Label } from "@/components/ui/label.tsx";
 
-export default function TodoList() {
-  const todos = [
-    {
-      id: 1,
-      title: "First Todo",
-      description: "This is the first todo item",
-      created: new Date(),
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Second Todo",
-      description: "This is the second todo item",
-      created: new Date(),
-      completed: true,
-    },
-  ];
+export default function TodoList({todos} : {todos: TTodo[]}) {
 
   return (
     <div className="space-y-4">
